@@ -139,8 +139,19 @@ abstract class AbstractTransformer implements TransformerInterface
         $translationDomain = $form->getConfig()->getOption('translation_domain');
 
         $formConfig = $form->getConfig();
-        if ($help = $formConfig->getOption('help', '')) {
-            $schema['description'] = $this->translator->trans($help, [], $translationDomain);
+
+        /*
+         * Here at Mention Me we use the "help_block" from the MopaBootstrapBundle.
+         * As part of Symfony 4.1, the "help" option has been standardised. We should prepare to switch over to
+         * that.
+         *
+         * In the meantime, we'll look at both: the help field first, and if not set, the help_block.
+         */
+        $helpFields = ["help", "help_block"];
+        foreach ($helpFields as $helpField) {
+            if ($help = $formConfig->getOption($helpField, '')) {
+                $schema['description'] = $this->translator->trans($help, [], $translationDomain);
+            }
         }
 
         if ($liform = $formConfig->getOption('liform')) {
