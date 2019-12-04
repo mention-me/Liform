@@ -1,6 +1,6 @@
 {
-    "name": "limenius/liform",
-    "description": "Library to transform Symfony Forms into Json Schema",
+    "name": "mention-me/liform",
+    "description": "Library to transform Symfony Forms into Json Schema.  Extends Limenius/liform.",
     "type": "library",
     "license": "MIT",
     "authors": [
