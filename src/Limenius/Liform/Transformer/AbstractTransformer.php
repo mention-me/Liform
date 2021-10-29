@@ -192,4 +192,14 @@ abstract class AbstractTransformer implements TransformerInterface
     {
         return $form->getConfig()->getOption('required');
     }
+
+        /**
+     * @param FormInterface $form
+     *
+     * @return boolean
+     */
+    protected function isDisabled(FormInterface $form)
+    {
+        return $form->getConfig()->getOption('disabled');
+    }
 }
