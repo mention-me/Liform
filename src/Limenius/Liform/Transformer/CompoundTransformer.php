@@ -49,6 +49,7 @@ class CompoundTransformer extends AbstractTransformer
         $data = [];
         $order = 1;
         $required = [];
+        $disabled = [];
 
         foreach ($form->all() as $name => $field) {
             $transformerData = $this->resolver->resolve($field);
@@ -70,15 +71,9 @@ class CompoundTransformer extends AbstractTransformer
             'title' => $form->getConfig()->getOption('label'),
             'type' => 'object',
             'properties' => $data,
+            'required' => $required,
+            'disabled' => $disabled,
         ];
-
-        if (!empty($required)) {
-            $schema['required'] = $required;
-        }
-
-        if (!empty($disabled)) {
-            $schema['disabled'] = $disabled;
-        }
 
         $innerType = $form->getConfig()->getType()->getInnerType();
 
