@@ -52,10 +52,6 @@ class ArrayTransformer extends AbstractTransformer
             $transformerData = $this->resolver->resolve($field);
             $transformedChild = $transformerData['transformer']->transform($field, $extensions, $transformerData['widget']);
             $children[] = $transformedChild;
-
-            if ($transformerData['transformer']->isRequired($field)) {
-                $required[] = $field->getName();
-            }
         }
 
         if (empty($children)) {

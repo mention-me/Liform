@@ -60,6 +60,10 @@ class CompoundTransformer extends AbstractTransformer
             if ($transformerData['transformer']->isRequired($field)) {
                 $required[] = $field->getName();
             }
+
+            if ($transformerData['transformer']->isDisabled($field)) {
+                $disabled[] = $field->getName();
+            }
         }
 
         $schema = [
@@ -70,6 +74,10 @@ class CompoundTransformer extends AbstractTransformer
 
         if (!empty($required)) {
             $schema['required'] = $required;
+        }
+
+        if (!empty($disabled)) {
+            $schema['disabled'] = $disabled;
         }
 
         $innerType = $form->getConfig()->getType()->getInnerType();
