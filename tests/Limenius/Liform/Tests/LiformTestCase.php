@@ -14,7 +14,7 @@ namespace Limenius\Liform\Tests;
 use Limenius\Liform\Form\Extension\AddLiformExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Forms;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  *
