@@ -68,6 +68,7 @@ abstract class AbstractTransformer implements TransformerInterface
     protected function addCommonSpecs(FormInterface $form, array $schema, $extensions = [], $widget)
     {
         $schema = $this->addLabel($form, $schema);
+        $schema = $this->addPlaceholder($form, $schema);
         $schema = $this->addAttr($form, $schema);
         $schema = $this->addPattern($form, $schema);
         $schema = $this->addDescription($form, $schema);
@@ -77,6 +78,14 @@ abstract class AbstractTransformer implements TransformerInterface
         return $schema;
     }
 
+    public function addPlaceholder(FormInterface $form, array $schema)
+    {
+        if ($attr = $form->getConfig()->getOption('placeholder')) {
+            $schema['placeholder'] = $attr;
+        }
+
+        return $schema;
+    }
 
     /**
      * @param FormInterface $form
